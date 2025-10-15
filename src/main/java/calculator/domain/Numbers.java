@@ -28,4 +28,11 @@ public class Numbers {
         }
     }
 
+    public int calculate() {
+        int sum = 0;
+        for (Integer number : numbers) {
+            sum += number;
+        }
+        return sum;
+    }
 }

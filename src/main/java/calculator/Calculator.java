@@ -23,7 +23,8 @@ public class Calculator {
         }
 
         Numbers numbers = Numbers.extractFrom(input);
+        int total = numbers.calculate();
 
-        outputView.printResult(1);
+        outputView.printResult(total);
     }
 }

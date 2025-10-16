@@ -10,21 +10,36 @@ public class Calculator {
     private final OutputView outputView = new OutputView();
 
     public void run() {
-        outputView.printRequireInputMessage();
-        String input = inputView.read();
+        String input = readInput();
+        int result = computeResult(input);
+        printResult(result);
+    }
+
+    private int computeResult(String input) {
         if (input.isBlank()) {
-            outputView.printResult(0);
-            return;
+            return 0;
         }
-        if(CustomDelimiter.hasCustomDelimiter(input)) {
-            CustomDelimiter customDelimiter = CustomDelimiter.from(input);
-            String numbers = CustomDelimiter.remainNumbers(input);
-            input = customDelimiter.changeDelimiter(numbers);
+
+        if (CustomDelimiter.hasCustomDelimiter(input)) {
+            input = normalizeDelimiter(input);
         }
 
         Numbers numbers = Numbers.extractFrom(input);
-        int total = numbers.calculate();
+        return numbers.calculate();
+    }
 
+    private String normalizeDelimiter(String input) {
+        CustomDelimiter customDelimiter = CustomDelimiter.from(input);
+        String numbers = CustomDelimiter.remainNumbers(input);
+        return customDelimiter.changeDelimiter(numbers);
+    }
+
+    private void printResult(int total) {
         outputView.printResult(total);
+    }
+
+    private String readInput() {
+        outputView.printRequireInputMessage();
+        return inputView.read();
     }
 }

@@ -22,7 +22,7 @@ public class Numbers {
 
     public int calculate() {
         return numbers.stream()
-                .mapToInt(Number::valueOf)
+                .mapToInt(Number::getNumber)
                 .sum();
     }
 }

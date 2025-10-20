@@ -22,7 +22,7 @@ public class Number {
         }
     }
 
-    public int valueOf() {
+    public int getNumber() {
         return number;
     }
 

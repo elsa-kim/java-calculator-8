@@ -11,7 +11,7 @@ public class CustomDelimiter {
     private final String customDelimiter;
 
     private CustomDelimiter(String customDelimiter) {
-        validate(customDelimiter);
+        validateNotBlank(customDelimiter);
         this.customDelimiter = customDelimiter;
     }
 
@@ -33,7 +33,7 @@ public class CustomDelimiter {
         return input.replace(customDelimiter, DEFAULT_DELIMITER_COMMA);
     }
 
-    private void validate(String customDelimiter) {
+    private void validateNotBlank(String customDelimiter) {
         if (customDelimiter.isBlank()) {
             throw new IllegalArgumentException(INVALID_CUSTOM_DELIMITER_MESSAGE);
         }
